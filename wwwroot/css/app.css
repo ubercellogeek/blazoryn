@@ -1,0 +1,91 @@
+.index-container {
+    background: linear-gradient(-68deg, #0062a3, #0077c7);
+    animation: gradient 7s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.index-logo {
+    width:350px;
+}
+
+.loading-area {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    height: 100px;
+}
+
+.loading-progress {
+    width:200px;
+    margin:10px;
+}
+
+.loading-message {
+    font-size:1em;
+    color:#ffffff;
+}
+
+
+.monaco-aria-container {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+.monaco-editor-container {
+    height:70vh;
+}
+
+.root {
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+    background-color:#1e1e1e;
+}
+.button-container {
+
+}
+.code-container {
+    height:70vh;
+    display:flex;
+    flex-direction: column;
+}
+.output-container {
+    border-top:2px solid rgb(57, 57, 57);
+    height:30vh;
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    color: #c7c7c7;
+    font-size:1em;
+    flex-grow:1;
+    overflow-y:scroll;
+}
+.output-header{
+    display: flex;
+    flex-direction: row;
+    border-top:2px solid rgb(57, 57, 57);
+}
+.output-metric {
+    padding:5px;
+    color: #c7c7c7;
+    font-weight: 800;
+}
+
+.bl2 {
+    border-left:2px solid rgb(57, 57, 57);
+}
+
+.br2 {
+    border-right:2px solid rgb(57, 57, 57);
+}
+
