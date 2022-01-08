@@ -63,7 +63,6 @@ class Program
                     {
                         _references.Add(MetadataReference.CreateFromStream(task));
                     }
-                    await Task.Delay(1);
                 }
                 catch (System.Exception ex)
                 {
@@ -74,9 +73,6 @@ class Program
             _internalState.Message = "Initializing Roslyn for WASM workloads...";
             await OnStateChanged.InvokeAsync(_internalState);
             await Task.Delay(10);
-            _internalState.Message = "Initializing Roslyn for WASM workloads...";
-            await OnStateChanged.InvokeAsync(_internalState);
-            await Task.Delay(100);
 
             // The first build breaks because at this time Blazor WASM doesn't support mutext (which Roslyn relies on underneath the hood). 
             // Subsequent executions should succeed without issue.
@@ -86,7 +82,6 @@ class Program
                 InternalBuild(DefaultCode);
             }
             catch (System.PlatformNotSupportedException) {}
-
 
             _internalState.Reset();
             _internalState.State = BuildManagerStateType.Idle;
@@ -198,7 +193,7 @@ class Program
             _internalState.State = BuildManagerStateType.Building;
             _internalState.PercentComplete = 0;
             await OnStateChanged.InvokeAsync(_internalState);
-            await Task.Delay(10);
+
             var buildResult = Build(source);
             var execResult = new ExecutionResult();
 
@@ -208,13 +203,13 @@ class Program
                 _internalState.State = BuildManagerStateType.Executing;
                 _internalState.PercentComplete = 0;
                 await OnStateChanged.InvokeAsync(_internalState);
-                await Task.Delay(10);
+
                 execResult = await Run(buildResult.ILBytes);
 
                 _internalState.Reset();
                 _internalState.State = BuildManagerStateType.Idle;
                 await OnStateChanged.InvokeAsync(_internalState);
-                await Task.Delay(10);
+
 
                return (buildResult, execResult);
             }
@@ -223,7 +218,7 @@ class Program
                 _internalState.Reset();
                 _internalState.State = BuildManagerStateType.Idle;
                 await OnStateChanged.InvokeAsync(_internalState);
-                await Task.Delay(10);
+
                 return (buildResult, null);
             }
         }
